@@ -1,4 +1,8 @@
 class StationController < ApplicationController
+  def index
+  	@all = Station.all
+  end
+
   def show
 		@stationJSON = HTTParty.get('http://www.capitalbikeshare.com/data/stations/bikeStations.xml')
   end

@@ -4,3 +4,20 @@
   <%= text_field_tag(:q) %>
   <%= submit_tag("Search") %>
 <% end %>
+
+<h2>All Stations</h2>
+
+<table>
+	<th>id</th>
+	<th>name</th>
+	<th>bikes available</th>
+	<th>slots available</th>
+	<% @all.each do |station| %>
+		<tr>
+			<td><%= station["id"] %></td>
+			<td><%= station["name"] %></td>
+			<td><%= station["nbBikes"] %></td>
+			<td><%= station["nbEmptyDocks"] %></td>
+		</tr>
+	<% end %>
+</table>
