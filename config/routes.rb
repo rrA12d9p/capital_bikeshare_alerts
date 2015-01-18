@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'home/show'
+  post '/search' => 'station#search'
+  get '/stations/:id' => 'station#show', as: :station_show
 
-  root 'home#show'
+  root 'station#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
