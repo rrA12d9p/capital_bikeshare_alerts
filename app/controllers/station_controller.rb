@@ -15,5 +15,8 @@ class StationController < ApplicationController
   def show
   	@id = params[:id]
   	@station = Station.find(@id)
+  	@name = @station["name"]
+  	@nbBikes = @station["nbBikes"]
+  	@nbEmptyDocks = @station["nbEmptyDocks"]
   end
 end

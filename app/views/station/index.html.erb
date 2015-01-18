@@ -1,23 +1,26 @@
 <h1>Station Map</h1>
 
-<%= form_tag("/search", method: "post") do %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
-<% end %>
+<div id="map-canvas">
+	<%= render partial: "map" %>
+</div>
 
 <h2>All Stations</h2>
 
-<table>
-	<th>id</th>
-	<th>name</th>
-	<th>bikes available</th>
-	<th>slots available</th>
-	<% @all.each do |station| %>
+<table class="tablesorter">
+	<thead>
 		<tr>
-			<td><%= station["id"] %></td>
-			<td><%= station["name"] %></td>
-			<td><%= station["nbBikes"] %></td>
-			<td><%= station["nbEmptyDocks"] %></td>
+			<th>Name</th>
+			<th>Bikes</th>
+			<th>Slots</th>
 		</tr>
-	<% end %>
+	</thead>
+	<tbody>
+		<% @all.each do |station| %>
+			<tr>
+				<td><%= link_to station["name"].truncate(50), station_show_path(station["id"]) %></td>
+				<td><%= station["nbBikes"] %></td>
+				<td><%= station["nbEmptyDocks"] %></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
