@@ -15,4 +15,7 @@ class Station
   	self.all.select{|s| s[key] == value}.first
   end
 
+  def self.where(key, value)
+  	self.all.select{|s| s[key] == value}
+  end
 end
